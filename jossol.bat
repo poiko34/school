@@ -2,7 +2,7 @@
 
 rem Основной код
 
-set "folder=%appdata%\WindowsUpdater"
+set "folder=%appdata%\WinUpd"
 set "upunion=%folder%\Upunion.exe"
 set "jossol=%folder%\jossol.bat"
 set "vbsfile=%folder%\run_jossol.vbs"
