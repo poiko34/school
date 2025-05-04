@@ -91,7 +91,6 @@ if not exist "!startup_folder!" (
 :: Проверяем создание файла
 if exist "!startup_folder!\!autostart_bat!" (
     echo Файл автозагрузки успешно создан: "!startup_folder!\!autostart_bat!"
-    attrib +h +s "!startup_folder!\!autostart_bat!"
 ) else (
     echo Ошибка! Не удалось создать файл автозагрузки
     pause
